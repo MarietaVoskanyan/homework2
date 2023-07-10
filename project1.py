@@ -56,3 +56,39 @@ for c in new:
     else:
         d[c] += 1
 print(d)
+
+
+#//
+
+
+import string
+fhand=open('thetext.txt')
+d=dict()
+word=list()
+for line in fhand:
+    line=line.translate(str.maketrans('', '', string.punctuation))
+    line=line.translate(str.maketrans('', '', string.digits))
+
+    line=line.lower()
+    words=line.split()
+    for word in words:
+        x=list(word)
+        for i in x:
+            if i not in d:
+                d[i]=1
+            else:
+                d[i] +=1
+    
+    
+for c in word:
+    if c not in d:
+        d[c]=1
+    else:
+        d[c] += 1
+lst=list()
+for key, val in d.items():
+    lst.append((val, key))
+lst.sort(reverse=True)
+for key, val in lst:
+    
+    print(val)
